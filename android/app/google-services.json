@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "155507588971",
+    "project_id": "taptodo-d996e",
+    "storage_bucket": "taptodo-d996e.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:155507588971:android:7b035203b55262fd06962e",
+        "android_client_info": {
+          "package_name": "com.example.tap_todo"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "155507588971-76ihom30rai2ltgjhfoijem3oboisrs5.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBgF-kMBB3GJ-Ah2LIHJ_zMed7fHdnp584"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "155507588971-76ihom30rai2ltgjhfoijem3oboisrs5.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "155507588971-l10emfh02j1684bqcekd652hl6ek9706.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.tapTodo"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
