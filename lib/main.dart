@@ -1,13 +1,11 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:tap_todo/add_product.dart';
 import 'package:tap_todo/bloc/product_state.dart';
-import 'package:tap_todo/product_list.dart';
-// ignore: import_of_legacy_library_into_null_safe
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:tap_todo/utils/theme.dart';
 import 'bloc/product_bloc.dart';
+import 'presentation_layer/product_list.dart';
 import 'utils/firebase_config.dart';
 
 void main() async {
