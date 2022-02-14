@@ -5,7 +5,9 @@ import 'package:tap_todo/bloc/product_bloc.dart';
 import 'package:tap_todo/bloc/product_event.dart';
 import 'package:tap_todo/bloc/product_state.dart';
 import 'package:tap_todo/utils/constants.dart';
-import 'model/product_model.dart';
+import 'package:tap_todo/widget/custom_button.dart';
+import 'package:tap_todo/widget/custom_text_field.dart';
+import '../model/product_model.dart';
 
 class AddProduct extends StatefulWidget {
   const AddProduct({Key? key}) : super(key: key);
@@ -153,128 +155,3 @@ class _AddProductState extends State<AddProduct> {
   }
 }
 
-class CustomButton extends StatelessWidget {
-  final String? title;
-  final bool isEnable;
-  final bool isLoading;
-  final VoidCallback onPressed;
-  const CustomButton({
-    Key? key,
-    required this.title,
-    this.isEnable = false,
-    this.isLoading = false,
-    required this.onPressed,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Opacity(
-      opacity: isEnable ? 1 : 0.5,
-      child: SizedBox(
-        height: 48,
-        width: double.infinity,
-        child: ElevatedButton(
-          child: isLoading
-              ? const Center(
-                  child: CircularProgressIndicator(),
-                )
-              : Text(title!),
-          onPressed: isEnable ? onPressed : () {},
-          style: ElevatedButton.styleFrom(
-            onPrimary: Theme.of(context).primaryColor,
-            primary: Theme.of(context).accentColor,
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(32.0),
-            ),
-          ),
-        ),
-      ),
-    );
-  }
-}
-
-class CutomTextField extends StatelessWidget {
-  final String? hint;
-  final TextEditingController controller;
-  final Function(String) onChange;
-  final TextInputType keyBoardType;
-  final List<TextInputFormatter>? formatters;
-  final Widget? trailingWidget;
-  final Widget? leadingWidget;
-  const CutomTextField(
-      {Key? key,
-      this.hint,
-      required this.controller,
-      required this.onChange,
-      this.formatters,
-      this.trailingWidget,
-      this.leadingWidget,
-      this.keyBoardType = TextInputType.name})
-      : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return IntrinsicHeight(
-      child: SizedBox(
-        height: 48,
-        child: TextFormField(
-          keyboardType: keyBoardType,
-          autovalidateMode: AutovalidateMode.always,
-          controller: controller,
-          maxLines: 1,
-          inputFormatters: formatters,
-          decoration: InputDecoration(
-            prefixIcon: leadingWidget,
-            suffixIcon: trailingWidget,
-            suffixIconConstraints: const BoxConstraints(
-              minWidth: 2,
-              minHeight: 2,
-            ),
-            labelText: hint,
-            labelStyle: Theme.of(context).textTheme.bodyText1,
-            fillColor: Theme.of(context).primaryColor,
-            filled: true,
-            focusedBorder: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(32.0),
-              borderSide: BorderSide(
-                width: 1,
-                color: Theme.of(context).primaryColor,
-              ),
-            ),
-            disabledBorder: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(32.0),
-              borderSide: BorderSide(
-                width: 1,
-                color: Theme.of(context).primaryColor,
-              ),
-            ),
-            enabledBorder: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(32.0),
-              borderSide: BorderSide(
-                width: 1,
-                color: Theme.of(context).primaryColor,
-              ),
-            ),
-            border: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(32.0),
-            ),
-            errorBorder: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(32.0),
-                borderSide: BorderSide(
-                  width: 1,
-                  color: Theme.of(context).accentColor,
-                )),
-            focusedErrorBorder: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(32.0),
-              borderSide: BorderSide(
-                width: 1,
-                color: Theme.of(context).accentColor,
-              ),
-            ),
-          ),
-          onChanged: onChange,
-        ),
-      ),
-    );
-  }
-}

@@ -1,12 +1,14 @@
 import 'package:another_flushbar/flushbar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:tap_todo/add_product.dart';
 import 'package:tap_todo/bloc/product_bloc.dart';
 import 'package:tap_todo/bloc/product_event.dart';
 import 'package:tap_todo/bloc/product_state.dart';
 import 'package:tap_todo/model/product_model.dart';
+import 'package:tap_todo/presentation_layer/add_product.dart';
 import 'package:tap_todo/utils/constants.dart';
+import 'package:tap_todo/widget/custom_button.dart';
+import 'package:tap_todo/widget/custom_text_field.dart';
 
 class ProductList extends StatefulWidget {
   ProductList({Key? key}) : super(key: key);
@@ -78,7 +80,7 @@ class _ProductListState extends State<ProductList> {
               onPressed: () async {
                 bool pop = await Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => AddProduct()),
+                  MaterialPageRoute(builder: (context) => const AddProduct()),
                 );
                 // ignore: unnecessary_null_comparison
                 if (pop) {
