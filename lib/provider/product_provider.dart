@@ -1,9 +1,9 @@
 import 'package:tap_todo/model/product_model.dart';
-import 'package:tap_todo/provider/api.dart';
+import 'package:tap_todo/provider/firebase_api.dart';
 import 'package:tap_todo/utils/constants.dart';
 
 class ProductProvider {
-  final Api _api = Api(FireBaseCollectionsName.todo);
+  final FirebaseApi _api = FirebaseApi(FireBaseCollectionsName.todo);
 
   Future<List<Product>> fetchTodoItems() async {
     try {
