@@ -31,7 +31,6 @@ class _AddProductState extends State<AddProduct> {
   @override
   void dispose() {
     // TODO: implement dispose
-    _productBloc.close();
     super.dispose();
   }
 
@@ -49,11 +48,15 @@ class _AddProductState extends State<AddProduct> {
   }
 
   void _addProducts() {
-    _productBloc.add(ProductAddEvent(
-        data: Product(
-            name: _nameController.text,
-            description: _descriptionController.text,
-            price: double.parse(_priceController.text))));
+    try {
+      _productBloc.add(ProductAddEvent(
+          data: Product(
+              name: _nameController.text,
+              description: _descriptionController.text,
+              price: double.parse(_priceController.text))));
+    } catch (exp) {
+      print(exp);
+    }
   }
 
   @override
@@ -139,7 +142,8 @@ class _AddProductState extends State<AddProduct> {
                             return CustomButton(
                               onPressed: _addProducts,
                               title: 'Submit',
-                              isEnable: _isEnable,
+                              isEnable:
+                                  _isEnable || state is AddingProductState,
                               isLoading: state is AddingProductState,
                             );
                           });
@@ -154,4 +158,3 @@ class _AddProductState extends State<AddProduct> {
     );
   }
 }
-
