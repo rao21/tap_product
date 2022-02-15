@@ -1,5 +1,5 @@
 class FireBaseCollectionsName {
-  static var todo = 'todo';
+  static var products = 'products';
 }
 
 class GlobalConstant {
