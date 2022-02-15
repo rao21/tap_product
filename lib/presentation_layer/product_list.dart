@@ -9,9 +9,10 @@ import 'package:tap_todo/presentation_layer/add_product.dart';
 import 'package:tap_todo/utils/constants.dart';
 import 'package:tap_todo/widget/custom_button.dart';
 import 'package:tap_todo/widget/custom_text_field.dart';
+import 'package:tap_todo/widget/no_data.dart';
 
 class ProductList extends StatefulWidget {
-  ProductList({Key? key}) : super(key: key);
+  const ProductList({Key? key}) : super(key: key);
 
   @override
   State<ProductList> createState() => _ProductListState();
@@ -29,7 +30,6 @@ class _ProductListState extends State<ProductList> {
 
   @override
   void dispose() {
-    // TODO: implement dispose
     _productBloc.close();
     super.dispose();
   }
@@ -64,6 +64,13 @@ class _ProductListState extends State<ProductList> {
             child: CutomTextField(
                 hint: 'Search product',
                 controller: _searchController,
+                trailingWidget: const Padding(
+                  padding: EdgeInsets.only(right: 8.0),
+                  child: Icon(
+                    Icons.search,
+                    size: 18,
+                  ),
+                ),
                 onChange: (value) {
                   _productBloc.add(ProductSearchEvent(query: value));
                 }),
@@ -79,9 +86,11 @@ class _ProductListState extends State<ProductList> {
               isEnable: true,
               onPressed: () async {
                 bool pop = await Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => const AddProduct()),
-                );
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => const AddProduct()),
+                    ) ??
+                    false;
                 // ignore: unnecessary_null_comparison
                 if (pop) {
                   _showProductAddNotification();
@@ -120,7 +129,7 @@ class _ProductBlocListState extends State<ProductBlocList> {
                 return Center(child: Text(state.message.toString()));
               }
               if (state is FetchingProductEmptyListState) {
-                return const Text("No Data found");
+                return const NoDataWidget();
               }
 
               if (state is FetchedProductSuccessedState) {
