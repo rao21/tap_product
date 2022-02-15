@@ -13,10 +13,12 @@ void main() async {
   await Firebase.initializeApp(
     options: DefaultFirebaseConfig.platformOptions,
   );
-  runApp(MyApp());
+  runApp(const MyApp());
 }
 
 class MyApp extends StatefulWidget with WidgetsBindingObserver {
+  const MyApp({Key? key}) : super(key: key);
+
   @override
   State<MyApp> createState() => _MyAppState();
 }
@@ -40,7 +42,7 @@ class _MyAppState extends State<MyApp> {
         theme: AppThemes.lightTheme,
         darkTheme: AppThemes.darkTheme,
         themeMode: ThemeMode.system,
-        home: ProductList(),
+        home: const ProductList(),
       ),
     );
   }
