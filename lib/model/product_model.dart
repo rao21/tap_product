@@ -1,5 +1,3 @@
-import 'package:tap_todo/utils/constants.dart';
-
 class Product {
   String? id;
   double? price;
