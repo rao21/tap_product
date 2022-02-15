@@ -32,21 +32,13 @@ class ProductBloc extends Bloc<ProductEvent, ProductState> {
     if (event is ProductAddEvent) {
       yield AddingProductState();
       try {
-        var _result = await productProvider.addProduct(obj: event.data);
+        await productProvider.addProduct(obj: event.data);
         yield AddedProductSuccessedState(data: event.data);
       } catch (e) {
         yield AddedProductFailedState(message: 'Failed to add data');
       }
     }
-    if (event is ProductAddEvent) {
-      yield AddingProductState();
-      try {
-        var _result = await productProvider.addProduct(obj: event.data);
-        yield AddedProductSuccessedState(data: event.data);
-      } catch (e) {
-        yield AddedProductFailedState(message: 'Failed to add data');
-      }
-    }
+
     if (event is ProductSearchEvent) {
       yield FetchingProductListState();
       try {
@@ -65,9 +57,8 @@ class ProductBloc extends Bloc<ProductEvent, ProductState> {
                       .contains(event.query.toLowerCase()) ||
                   e.price!.toString().contains(event.query.toLowerCase()))
               .toList();
-          print(_result.toString());
           _products = _result;
-          
+
           yield FetchedProductSuccessedState(data: _result);
         }
       } catch (exp) {
