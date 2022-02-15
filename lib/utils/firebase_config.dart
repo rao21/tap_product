@@ -9,10 +9,10 @@ class DefaultFirebaseConfig {
       // iOS and MacOS
       return const FirebaseOptions(
         appId: '1:448618578101:ios:0b650370bb29e29cac3efc',
-        apiKey: 'AIzaSyAgUhHU8wSJgO5MVNy95tMT07NEjzMOfz0',
-        projectId: 'react-native-firebase-testing',
+        apiKey: 'AIzaSyDPDSkekHhkw187PC5YostFEKudDaKFbTA',
+        projectId: 'taptodo-d996e',
         messagingSenderId: '448618578101',
-        iosBundleId: 'io.flutter.plugins.firebasecoreexample',
+        iosBundleId: 'com.example.tapTodo',
       );
     } else {
       // Android
